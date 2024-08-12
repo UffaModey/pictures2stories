@@ -1,0 +1,33 @@
+{% extends "pictures_2_stories/base.html" %}
+{% block title %}Story Create{% endblock %}
+{% block head %}
+    {{ block.super }}
+    <style>
+      body {
+          min-height: 75rem;
+          padding-top: 4.5rem;
+      }
+  </style>
+{% endblock %}
+{% block content %}
+    <h1>Add New Story</h1>
+
+    <form enctype="multipart/form-data" method="POST" action="{% url 'add_story' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="image_one" class="form-label">Upload First Image</label>
+            <input type="file" class="form-control" id="image_one" name="image_one" required>
+        </div>
+        <div class="mb-3">
+            <label for="image_two" class="form-label">Upload Second Image</label>
+            <input type="file" class="form-control" id="image_two" name="image_two" required>
+        </div>
+        <div class="mb-3">
+            <label for="image_three" class="form-label">Upload Third Image</label>
+            <input type="file" class="form-control" id="image_three" name="image_three" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Story</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+{% endblock %}
+         
