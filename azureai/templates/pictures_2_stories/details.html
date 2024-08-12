@@ -1,0 +1,42 @@
+{% extends "pictures_2_stories/base.html" %}
+{% load static %}
+{% block title %}Story Details{% endblock %}
+{% block head %}
+  {{ block.super }}
+  <style>
+    body {
+        min-height: 75rem;
+        padding-top: 4.5rem;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+    <h1>{{ story.title }}</h1>
+
+    <div class="row">
+        <div class="col-md-2 fw-bold">Generated Content:</div>
+        <div class="col">{{ story.generated_story }}</div>
+    </div>
+
+    <h4 class="mt-5">Images</h4>
+
+    <!-- Button trigger modal -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Caption</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for picture in images %}
+                <tr>
+                    <td><img src="{{ picture.image.url }}" alt="Imag" style="max-width: 200px; max-height: 200px;"></td>
+                    <td>{{ picture.caption }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
