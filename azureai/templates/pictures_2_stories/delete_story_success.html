@@ -1,0 +1,20 @@
+{% extends "pictures_2_stories/base.html" %}
+{% block title %}Story Deleted{% endblock %}
+{% block head %}
+    {{ block.super }}
+    <style>
+      body {
+          min-height: 75rem;
+          padding-top: 4.5rem;
+      }
+
+  </style>
+{% endblock %}
+{% block content %}
+  <h1>Story Has Been Deleted</h1>
+
+
+  <div class="d-flex justify-content-end">
+      <a href="{% url 'stories_list' %}" class="btn btn-sm btn-primary px-4 gap-3">Home Page</a>
+  </div>
+{% endblock %}
