@@ -24,14 +24,19 @@ load_dotenv()
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qkk1v+xcb)(vufavwdxu879zr@n$lf2h1^#!#=w46z&&k!99%p'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-CSRF_TRUSTED_ORIGINS = os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS', default=['http://127.0.0.1:8000'])
+# DEBUG = True
+#
+# ALLOWED_HOSTS = []
+#
+# CSRF_TRUSTED_ORIGINS = os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS', default=['http://127.0.0.1:8000'])
+# Configure the domain name using the environment variable
+# that Azure automatically creates for us.
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else ['http://127.0.0.1:8000']
+DEBUG = False
 
 # Application definition
 
